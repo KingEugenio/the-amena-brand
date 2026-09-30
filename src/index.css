@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-display: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+  --font-serif-luxury: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --font-sans: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  --color-brand-bg: #FAF8F5;
+  --color-brand-surface: #F3EFEB;
+  --color-brand-card: #FFFFFF;
+  --color-brand-text: #2C2825;
+  --color-brand-muted: #78736E;
+  --color-brand-taupe: #B8A99A;
+  --color-brand-taupe-dark: #A49484;
+  --color-brand-topbar: #9E9385;
+  --color-brand-border: #E8E3DC;
+}
+
+:root {
+  --color-background: #FAF8F5;
+  --color-surface: #F3EFEB;
+  --color-card: #FFFFFF;
+  --color-text: #2C2825;
+  --color-text-secondary: #5C5650;
+  --color-muted: #78736E;
+  --color-taupe: #B8A99A;
+  --color-border: #E8E3DC;
+  color-scheme: light;
+}
+
+.dark {
+  --color-background: #141210;
+  --color-surface: #1E1B18;
+  --color-card: #191715;
+  --color-text: #F7F4EE;
+  --color-text-secondary: #DDD6CC;
+  --color-muted: #A8A096;
+  --color-taupe: #C8BAAC;
+  --color-border: #332F2B;
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+h1, h2, h3, .font-serif-heading {
+  font-family: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+}
+
+.font-serif-luxury {
+  font-family: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+}
+
+/* Ensure crisp contrast and anti-aliasing */
+body, button, input, textarea, select {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
