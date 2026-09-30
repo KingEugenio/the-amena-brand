@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+:root {
+  --bg-base: #faf9f6;
+  --bg-surface: #ffffff;
+  --text-main: #111111;
+  --text-muted: #4b5563;
+  --border-line: #e5e5e5;
+  --primary-accent: #c5a880;
+  --card-bg: #ffffff;
+  --input-bg: #faf9f6;
+  color-scheme: light;
+}
+
+:root.dark, .dark {
+  --bg-base: #0c0c0c;
+  --bg-surface: #161616;
+  --text-main: #f9f9f9;
+  --text-muted: #cccccc;
+  --border-line: #272727;
+  --primary-accent: #d4b892;
+  --card-bg: #181818;
+  --input-bg: #1e1e1e;
+  color-scheme: dark;
+}
+
+@theme {
+  --font-serif: 'Cormorant Garamond', Garamond, Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --color-base: var(--bg-base);
+  --color-surface: var(--bg-surface);
+  --color-main: var(--text-main);
+  --color-muted: var(--text-muted);
+  --color-line: var(--border-line);
+  --color-accent: var(--primary-accent);
+}
+
+/* Global button reset to prevent browser/OS user-agent color bugs (especially Android Chrome) */
+button {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+/* Guaranteed bulletproof color and background utilities across all Tailwind configurations */
+.text-\[var\(--text-main\)\] {
+  color: var(--text-main) !important;
+}
+
+.text-\[var\(--text-muted\)\] {
+  color: var(--text-muted) !important;
+}
+
+.text-\[var\(--primary-accent\)\] {
+  color: var(--primary-accent) !important;
+}
+
+.bg-\[var\(--card-bg\)\] {
+  background-color: var(--card-bg) !important;
+}
+
+.bg-\[var\(--bg-surface\)\] {
+  background-color: var(--bg-surface) !important;
+}
+
+.bg-\[var\(--bg-base\)\] {
+  background-color: var(--bg-base) !important;
+}
+
+.border-\[var\(--border-line\)\] {
+  border-color: var(--border-line) !important;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+h1, h2, h3, h4, .font-editorial {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+/* Skeleton animation and reduced motion */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    #f0efe9 0%,
+    #e5e4de 50%,
+    #f0efe9 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s infinite ease-in-out;
+}
+
+.dark .skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    #181818 0%,
+    #2a2a2a 50%,
+    #181818 100%
+  );
+  background-size: 200% 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-shimmer {
+    animation: none !important;
+    background: #e5e4de !important;
+  }
+  .dark .skeleton-shimmer {
+    animation: none !important;
+    background: #252525 !important;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom scrollbar for gallery / horizontal scrolling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-line);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
